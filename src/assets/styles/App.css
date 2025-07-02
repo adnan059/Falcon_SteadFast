@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+
+:root {
+  --main-theme: #0f172a;
+  --sec-theme: #00a788;
+  --text-color2: #475569;
+  --main-bg: #f2f6fa;
+
+  --fs-a: 1rem;
+  --fs-b: 1.2rem;
+  --fs-c: 1.4rem;
+  --fs-d: 1.6rem;
+  --fs-e: 1.8rem;
+  --fs-f: 2rem;
+  --fs-g: 2.4rem;
+  --fs-h: 2.8rem;
+  --fs-i: 3.2rem;
+  --fs-j: 4.8rem;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: var(--fs-d);
+  font-family: "Onest", sans-serif;
+  color: var(--main-theme);
+  background-color: var(--main-bg);
+}
+
+img {
+  display: block;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 52.5%;
+  }
+}

@@ -1,0 +1,127 @@
+import React, { useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setSelectedVariant,
+  setSelectedAttributes,
+} from "@/redux/productSlice.js";
+
+function formatProductVariations(variations) {
+  return variations.map((variation) => {
+    const attrs = {};
+    if (Array.isArray(variation.variation_attributes)) {
+      for (const attr of variation.variation_attributes) {
+        const name = attr.attribute?.name || attr.attribute_name || "Unknown";
+        const value =
+          attr.attribute_option?.attribute_value ||
+          attr.attribute_value ||
+          "N/A";
+        attrs[name] = value;
+      }
+    }
+    return {
+      id: variation.id,
+      sku: variation.sku,
+      barcode: variation.barcode,
+      purchase_price: variation.purchase_price,
+      regular_price: variation.regular_price,
+      discount_price: variation.discount_price,
+      e_price: variation.e_price,
+      e_discount_price: variation.e_discount_price,
+      total_stock_qty: variation.total_stock_qty,
+      image: variation.image,
+      variation_attributes: attrs,
+    };
+  });
+}
+
+const SelectVariant = () => {
+  const dispatch = useDispatch();
+  const { selectedProduct, selectedAttributes, selectedVariant } = useSelector(
+    (state) => state.product
+  );
+
+  console.log(selectedVariant);
+
+  const variations = useMemo(
+    () => formatProductVariations(selectedProduct?.variations || []),
+    [selectedProduct]
+  );
+
+  const attributeNames = useMemo(() => {
+    return [
+      ...new Set(
+        variations.flatMap((v) => Object.keys(v.variation_attributes || {}))
+      ),
+    ];
+  }, [variations]);
+
+  const handleAttributeChange = (attrName, value) => {
+    const updatedAttributes = { ...selectedAttributes, [attrName]: value };
+    dispatch(setSelectedAttributes(updatedAttributes));
+
+    const matched = variations.find((v) =>
+      attributeNames.every(
+        (key) => v.variation_attributes?.[key] === updatedAttributes[key]
+      )
+    );
+
+    dispatch(setSelectedVariant(matched || null));
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Attribute Selection UI */}
+      <div className="space-y-4">
+        {attributeNames.map((attr) => {
+          const options = [
+            ...new Set(
+              variations
+                .map((v) => v.variation_attributes?.[attr])
+                .filter(Boolean)
+            ),
+          ];
+
+          return (
+            <div key={attr}>
+              <h4 className="font-semibold">{attr}</h4>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {options.map((val) => (
+                  <button
+                    key={val}
+                    onClick={() => handleAttributeChange(attr, val)}
+                    className={`px-3 py-1 rounded border ${
+                      selectedAttributes?.[attr] === val
+                        ? "bg-blue-600 text-white"
+                        : "bg-white text-gray-800 border-gray-300"
+                    }`}
+                  >
+                    {val}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Selected Variant Display */}
+      {selectedVariant ? (
+        <div className="border rounded p-4 shadow-sm max-w-xs">
+          <img
+            src={selectedVariant.image}
+            alt="Selected Variant"
+            className="w-36 h-36 object-cover mb-3"
+          />
+          <div className="text-lg font-medium">
+            ৳ {selectedVariant.discount_price || selectedVariant.regular_price}
+          </div>
+          <p className="text-sm text-gray-600">SKU: {selectedVariant.sku}</p>
+        </div>
+      ) : (
+        <p className="text-red-500">Please select a valid combination.</p>
+      )}
+    </div>
+  );
+};
+
+export default SelectVariant;
