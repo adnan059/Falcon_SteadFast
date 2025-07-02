@@ -6,6 +6,13 @@ This project is part of a frontend e-commerce application, built with **React**,
 
 🔗 [Visit the Live Site](https://falcon-steadfast-adnan.vercel.app/)
 
+> ⚠️ **Note on API Connectivity:**  
+> This project is hosted over HTTPS, but the provided backend APIs currently use HTTP. Modern browsers block HTTP requests from secure (HTTPS) pages due to security policies.
+>
+> As a result, certain data-fetching features may not work in the live deployment. The app is designed to function as expected once secure API endpoints (HTTPS) are available.
+>
+> API endpoint URLs are defined in [`/src/lib/constants.js`](./src/lib/constants.js) for easy modification if the reviewer wants to point to alternative or secure services.
+
 ## 🧰 Technologies Used
 
 - **React**
@@ -31,7 +38,6 @@ This project is part of a frontend e-commerce application, built with **React**,
 - Styled components via TailwindCSS and ShadCN
 - Optimized for mobile and desktop views
 
-
 ## 📝 Usage
 
 Clone the repo and install dependencies:
@@ -42,3 +48,4 @@ cd Falcon_SteadFast
 npm install --legacy-peer-deps
 npm run dev
 
+```
