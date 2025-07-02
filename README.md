@@ -38,6 +38,20 @@ This project is part of a frontend e-commerce application, built with **React**,
 - Styled components via TailwindCSS and ShadCN
 - Optimized for mobile and desktop views
 
+## 📸 Screenshots
+
+### Product Details
+
+![All Tasks Screenshot](screenshots/productDetails.png)
+
+### Description and Specifications
+
+![Single Task Details Screenshot](screenshots/descAndSpecs.png)
+
+### Cart
+
+![Create Screenshot](screenshots/cart.png)
+
 ## 📝 Usage
 
 Clone the repo and install dependencies:
