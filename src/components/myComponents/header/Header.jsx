@@ -73,9 +73,9 @@ const Header = () => {
             </Badge>
           </Link>
 
-          <Link to={"/account"}>
+          <a href="#">
             <User size={32} />
-          </Link>
+          </a>
         </div>
       </div>
     </header>

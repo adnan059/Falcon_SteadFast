@@ -8,7 +8,6 @@ import Loader from "../loader/Loader";
 const ProductDetails = () => {
   const { selectedProduct } = useSelector((state) => state.product);
 
-  //console.log(selectedProduct);
   return (
     <>
       <section className="max-w-[1440px]   mx-auto pt-72">

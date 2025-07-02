@@ -1,6 +1,6 @@
 import React from "react";
 import ExpandableText from "../../expendableText/ExpendableText";
-//import { text } from "@/lib/constants";
+
 import { useSelector } from "react-redux";
 
 const ProductDesc = () => {

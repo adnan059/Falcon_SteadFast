@@ -7,31 +7,7 @@ import {
 } from "@/redux/productSlice.js";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
-function formatProductVariations(variations) {
-  return variations.map((variation) => {
-    const attrs = {};
-    (variation.variation_attributes || []).forEach((attr) => {
-      const name = attr?.attribute?.name || attr?.attribute_name || "Unknown";
-      const value =
-        attr?.attribute_option?.attribute_value ||
-        attr?.attribute_value ||
-        "N/A";
-      attrs[name] = value;
-    });
-
-    return {
-      id: variation.id,
-      sku: variation.sku,
-      barcode: variation.barcode,
-      regular_price: variation.regular_price,
-      discount_price: variation.discount_price,
-      image: variation.image,
-      total_stock_qty: variation.total_stock_qty,
-      variation_attributes: attrs,
-    };
-  });
-}
+import { formatProductVariations } from "@/lib/utils";
 
 const SelectVariant = () => {
   const dispatch = useDispatch();

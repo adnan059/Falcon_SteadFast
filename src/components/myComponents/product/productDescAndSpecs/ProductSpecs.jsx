@@ -25,6 +25,7 @@ const groupAttributes = (variations) => {
   return grouped;
 };
 
+// -----------------------------------
 const renderGroupedAttributes = (grouped) => {
   return Object.entries(grouped).map(([key, valueSet]) => (
     <div key={key} className="mb-3">

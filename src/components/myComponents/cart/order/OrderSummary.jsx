@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import Shipping from "./Shipping";
+import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
+  const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
 
   const [deliveryType, setDeliveryType] = useState("");
@@ -106,6 +108,7 @@ const OrderSummary = () => {
             ? "bg-[var(--sec-theme)] hover:bg-green-700"
             : "bg-gray-400 cursor-not-allowed"
         }`}
+        onClick={() => navigate("/checkout")}
       >
         Proceed to Checkout
       </button>

@@ -89,9 +89,6 @@ const CartItem = ({ cartItem, selectedItems, setSelectedItems }) => {
             <p className="text-[#475569]">
               {formatAttributes(cartItem?.variation_attributes)}
             </p>
-            {/* <p className="text-xs text-gray-500">
-              In Stock: {cartItem.total_stock_qty}
-            </p> */}
 
             {/* Quantity Controls */}
             <div className="flex items-center gap-4">

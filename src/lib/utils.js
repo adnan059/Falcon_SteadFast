@@ -31,6 +31,25 @@ export function formatPrice(amount) {
 
 // --------------------------------------
 
+export const formatAttributes = (attributes) => {
+  if (!attributes || typeof attributes !== "object") return "";
+
+  return Object.entries(attributes)
+    .map(([key, value]) => {
+      const formattedKey = key;
+      const formattedValue =
+        typeof value === "string"
+          ? value
+              .split(" ")
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" ")
+          : value;
+      return `${formattedKey}: ${formattedValue}`;
+    })
+    .join(", ");
+};
+
+// -------------------------------------------------
 export function formatProductVariations(variations) {
   return variations.map((variation) => {
     const attrs = {};
@@ -56,22 +75,4 @@ export function formatProductVariations(variations) {
   });
 }
 
-// --------------------------------------
-
-export const formatAttributes = (attributes) => {
-  if (!attributes || typeof attributes !== "object") return "";
-
-  return Object.entries(attributes)
-    .map(([key, value]) => {
-      const formattedKey = key;
-      const formattedValue =
-        typeof value === "string"
-          ? value
-              .split(" ")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(" ")
-          : value;
-      return `${formattedKey}: ${formattedValue}`;
-    })
-    .join(", ");
-};
+// ------------------------------------------

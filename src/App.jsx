@@ -8,6 +8,7 @@ import HomeRedirect from "./components/myComponents/homeRedirect/HomeRedirect";
 import CartPage from "./pages/CartPage";
 import SubHeader from "./components/myComponents/header/SubHeader";
 import BreadCrumbHeader from "./components/myComponents/header/BreadCrumbHeader";
+import CheckOutPage from "./pages/CheckOutPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/" element={<HomeRedirect />} />
           <Route path="/product/:slug" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
