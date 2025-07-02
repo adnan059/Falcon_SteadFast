@@ -1,12 +1,44 @@
-# React + Vite
+# 🛍️ E-Commerce Product & Cart Module
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is part of a frontend e-commerce application, built with **React**, **React Router**, **TailwindCSS**, **ShadCN**, and **Axios**. It includes dynamic product detail rendering and cart functionality, integrating quantity control, delivery fee logic, coupon application, and a checkout summary flow.
 
-Currently, two official plugins are available:
+## 🚀 Live Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Visit the Live Site](https://falcon-steadfast-adnan.vercel.app/)
 
-## Expanding the ESLint configuration
+## 🧰 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React**
+- **React Router DOM**
+- **TailwindCSS**
+- **ShadCN UI**
+- **Axios**
+- **Redux Toolkit**
+- **Vite**
+
+## 📦 Features
+
+- Product details page with dynamic variant pricing and stock detection
+- Responsive cart functionality with:
+  - Quantity adjustment with stock limits
+  - Select-all / remove selected interactions
+  - Dynamic price updates
+- Delivery type selection (Inside Dhaka, Outside Dhaka, Express)
+- Delivery fee calculation based on selection
+- Coupon application logic with sample codes (`save50`, `free100`)
+- Subtotal computation: `cartTotal + deliveryFee − couponDiscount`
+- Terms & Conditions checkbox gating checkout button
+- Styled components via TailwindCSS and ShadCN
+- Optimized for mobile and desktop views
+
+
+## 📝 Usage
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/adnan059/Falcon_SteadFast.git
+cd Falcon_SteadFast
+npm install --legacy-peer-deps
+npm run dev
+
