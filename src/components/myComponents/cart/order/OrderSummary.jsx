@@ -1,12 +1,13 @@
-import React, { useMemo, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { use, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Shipping from "./Shipping";
 import { useNavigate } from "react-router-dom";
+import { resetCart } from "@/redux/cartSlice";
 
 const OrderSummary = () => {
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
   const [deliveryType, setDeliveryType] = useState("");
   const [couponCode, setCouponCode] = useState("");
   const [couponDiscount, setCouponDiscount] = useState(0);
@@ -108,7 +109,10 @@ const OrderSummary = () => {
             ? "bg-[var(--sec-theme)] hover:bg-green-700"
             : "bg-gray-400 cursor-not-allowed"
         }`}
-        onClick={() => navigate("/checkout")}
+        onClick={() => {
+          dispatch(resetCart());
+          navigate("/checkout");
+        }}
       >
         Proceed to Checkout
       </button>
